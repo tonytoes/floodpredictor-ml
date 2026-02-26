@@ -17,4 +17,5 @@ df = pd.read_csv(file_path, encoding='ascii', delimiter=',')
 
 df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
 
+print(df.head())
 #%%
