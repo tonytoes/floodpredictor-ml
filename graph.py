@@ -32,4 +32,8 @@ nx.algorithms.degree_centrality(FG)
 nx.density(FG)
 nx.average_shortest_path_length(FG)
 nx.average_degree_connectivity(FG)
+
+dijpath = nx.dijkstra_path(FG, source='JAX', target='DFW')
+
+shortpath = nx.shortest_path(FG, source='JAX', target='DFW', weight='air_time')
 # %%
