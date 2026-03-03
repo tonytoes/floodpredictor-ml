@@ -13,12 +13,12 @@ data.dtypes
 # converting sched_dep_time to 'std' - Scheduled time of departure
 data['std'] = data.sched_dep_time.astype(str).str.replace('(\d{2}$)', '') + ':' + data.sched_dep_time.astype(str).str.extract('(\d{2}$)', expand=False) + ':00'
 # converting sched_arr_time to 'sta' - Scheduled time of arrival
-data['sta'] = data.sched_arr_time.astype(str).str.replace(r'(\d{2}$)', '') + ':' + data.sched_arr_time.astype(str).str.extract('(\d{2}$)', expand=False) + ':00'
+data['sta'] = data.sched_arr_time.astype(str).str.replace('(\d{2}$)', '') + ':' + data.sched_arr_time.astype(str).str.extract('(\d{2}$)', expand=False) + ':00'
 # converting dep_time to 'atd' Actual time of departure
-data['atd'] = data.dep_time.fillna(0).astype(np.int64).astype(str).str.replace(r'(\d{2}$)', '') + ':' + data.dep_time.fillna(0).astype(np.int64).astype(str).str.extract('(\d{2}$)', expand=False) + ':00'
+data['atd'] = data.dep_time.fillna(0).astype(np.int64).astype(str).str.replace('(\d{2}$)', '') + ':' + data.dep_time.fillna(0).astype(np.int64).astype(str).str.extract('(\d{2}$)', expand=False) + ':00'
 
 # converting arr_time to 'ata' - Actual time of arrival
-data['ata'] = data.arr_time.fillna(0).astype (np.int64).astype(str).str.replace(r'(\d{2}$)', '') + ':' + data.arr_time.fillna(0).astype(np.int64).astype(str).str.extract('(\d{2}$)', expand=False) + ':00'
+data['ata'] = data.arr_time.fillna(0).astype (np.int64).astype(str).str.replace('(\d{2}$)', '') + ':' + data.arr_time.fillna(0).astype(np.int64).astype(str).str.extract('(\d{2}$)', expand=False) + ':00'
 
 data['date'] = pd.to_datetime(data[['year', 'month', 'day']])
 
@@ -36,4 +36,5 @@ nx.average_degree_connectivity(FG)
 dijpath = nx.dijkstra_path(FG, source='JAX', target='DFW')
 
 shortpath = nx.shortest_path(FG, source='JAX', target='DFW', weight='air_time')
+
 # %%
