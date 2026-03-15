@@ -33,6 +33,8 @@ nx.density(FG)
 nx.average_shortest_path_length(FG)
 nx.average_degree_connectivity(FG)
 
+for path in nx.all_simple_paths(FG, source='JAX', target='DFW'):
+    print(path)
 dijpath = nx.dijkstra_path(FG, source='JAX', target='DFW')
 
 shortpath = nx.shortest_path(FG, source='JAX', target='DFW', weight='air_time')
