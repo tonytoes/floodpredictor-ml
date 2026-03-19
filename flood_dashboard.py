@@ -217,7 +217,7 @@ class FloodDashboard(ctk.CTk):
         self._kpi_feats = KPI(sb, "Features",  color=C["orange"])
         self._kpi_feats.pack(fill="x", **p)
 
-        ctk.CTkLabel(sb, text="v2.0  ·  FloodSense  ·  NCR",
+        ctk.CTkLabel(sb, text="v2.0  ·  FloodControl  ·  NCR",
                      font=("SF Pro Text", 8), text_color=C["border"]
                      ).pack(side="bottom", pady=8)
 
