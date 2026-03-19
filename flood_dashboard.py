@@ -360,10 +360,37 @@ class FloodDashboard(ctk.CTk):
         style.map("F.Treeview",
                   background=[("selected", C["blue"])],
                   foreground=[("selected", "white")])
+        style.configure(
+            "Vertical.TScrollbar",
+            background=C["card"],
+            troughcolor=C["panel"],
+            bordercolor=C["border"],
+            arrowcolor=C["muted"],
+            gripcount=0
+        )
+
+        style.map(
+            "Vertical.TScrollbar",
+            background=[("active", C["hover"]), ("!active", C["card"])]
+        )
+
+        style.configure(
+            "Horizontal.TScrollbar",
+            background=C["card"],
+            troughcolor=C["panel"],
+            bordercolor=C["border"],
+            arrowcolor=C["muted"],
+            gripcount=0
+        )
+
+        style.map(
+            "Horizontal.TScrollbar",
+            background=[("active", C["hover"]), ("!active", C["card"])]
+        )
 
         self._tree = ttk.Treeview(frame, style="F.Treeview", show="headings")
-        vsb = ttk.Scrollbar(frame, orient="vertical",   command=self._tree.yview)
-        hsb = ttk.Scrollbar(frame, orient="horizontal", command=self._tree.xview)
+        vsb = ttk.Scrollbar(frame, orient="vertical", command=self._tree.yview, style="Vertical.TScrollbar")
+        hsb = ttk.Scrollbar(frame, orient="horizontal", command=self._tree.xview, style="Horizontal.TScrollbar")
         self._tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
         vsb.pack(side="right", fill="y")
         hsb.pack(side="bottom", fill="x")
