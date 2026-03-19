@@ -49,18 +49,20 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
 C = {
-    "bg":          "#0d1117",
-    "panel":       "#161b22",
-    "card":        "#1c2430",
-    "hover":       "#21262d",
-    "orange":      "#e05c1a",
-    "blue":        "#3b82f6",
-    "green":       "#22c55e",
-    "yellow":      "#f59e0b",
-    "red":         "#ef4444",
-    "text":        "#e6edf3",
-    "muted":       "#8b949e",
-    "border":      "#30363d",
+    "bg":          "#0d1117",   # main background
+    "panel":       "#010409",   # deeper background (sidebars / base)
+    "card":        "#161b22",   # cards / containers
+    "hover":       "#21262d",   # hover states
+    
+    "orange":      "#f0883e",   # GitHub warning/orange
+    "blue":        "#58a6ff",   # primary accent (links/buttons)
+    "green":       "#3fb950",   # success/positive
+    "yellow":      "#d29922",   # warnings
+    "red":         "#f85149",   # errors
+    
+    "text":        "#e6edf3",   # main text
+    "muted":       "#7d8590",   # secondary text
+    "border":      "#30363d",   # borders/dividers
 }
 
 plt.rcParams.update({
@@ -114,7 +116,7 @@ class FloodDashboard(ctk.CTk):
 
     def __init__(self):
         super().__init__()
-        self.title("FloodSense  ·  NCR Flood Prediction")
+        self.title("FloodControl  ·  NCR Flood Prediction")
         self.geometry("1300x800")
         self.minsize(1100, 680)
         self.configure(fg_color=C["bg"])
@@ -145,7 +147,7 @@ class FloodDashboard(ctk.CTk):
         bar.pack(fill="x")
         bar.pack_propagate(False)
 
-        ctk.CTkLabel(bar, text="⛈  FloodSense",
+        ctk.CTkLabel(bar, text="⛈  FloodControl",
                      font=("SF Pro Display", 16, "bold"),
                      text_color=C["text"]).pack(side="left", padx=20)
 
@@ -373,7 +375,7 @@ class FloodDashboard(ctk.CTk):
                                        text_color=C["muted"],
                                        corner_radius=10)
         self._log_box.pack(fill="both", expand=True)
-        self._log("FloodSense started.")
+        self._log("FloodControl started.")
         self._log(f"API_KEY: {'✓ loaded' if os.getenv('API_KEY') else '✗ not set (Open-Meteo does not need one)'}")
         self._log(f"Cities: {', '.join(cities.keys())}")
 
